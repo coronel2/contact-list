@@ -1,54 +1,79 @@
 
-const lista_Contacto = [];
+const lista_Contacto = [
+  {
+    id: 1702788010527,
+    nombre: "Juana Perez",
+    edad: 19,
+    email: "juanan155@gmail.com",
+    telefono: 30122255447,
+    ubicacion: {
+      ciudad: "Medellin",
+      direccion: "comuna 13",
+    },
+  },
+];
 
- // nuevo Contacto
- function Contacto (id, Nombre,Apellido,Edad, Email, Teléfono, ciudad, Direccion){ 
+// nuevo Contacto
 
-        this.id = id;
-        this.Nombre = Nombre,
-        this.Apellido = Apellido,
-        this.Edad = Edad,
-        this.Email =Email,
-        this.Teléfono = Teléfono,
-        this.Ubicación = {
-                  ciudad: ciudad,
-                  Direccion: Direccion,
-                 }
-
-                
+function agregarContacto(
+  nombre,
+  edad,
+  email,
+  telefono,
+  ubicacion,
+  ciudad,
+  direccion
+) {
+  const user = {
+    id: Date.now(), //da un id unico
+    nombre: nombre,
+    edad: edad,
+    email: email,
+    telefono: telefono,
+    ubicacion: {
+      ciudad: ciudad,
+      direccion: direccion,
+    },
+  };
+  lista_Contacto.push(user);
 }
 
-  let contacto1 = new Contacto (0,'Elvin', 'Herrera',  29, 'elvinherrera16@gmail.com', 3002887944, 'Cartagena', 'Olaya Herrera, sector Playas Blancas')
- lista_Contacto.push(contacto1)
+const user1 = agregarContacto(
+  "elvin Herrera",
+  25,
+  "elvinherrera16@gmail.com",
+  321022200,
+  "Bolivar",
+  "cartagena",
+  "olaya herrera"
+);
+const user2 = agregarContacto(
+  "Jvin Hera",
+  30,
+  "el556@gmail.com",
+  311122200,
+  "Usa",
+  "Florida",
+  "Palm beach"
+);
 
- let contacto2 = new Contacto (1,'Kevin', 'Florez',  29, 'kevinflorez@gmail.com', 3005887944, 'Bolivar', 'La Estela sector Playas Blancas')
- lista_Contacto.push(contacto2)
- 
- let contacto3 = new Contacto (2,'Junior', 'Marin',  25, 'Jm@gmail.com', 3005587944, 'Sucre', ' sector Las Delicias')
- lista_Contacto.push(contacto3)
+console.log(lista_Contacto);
 
- console.log(lista_Contacto);
-
-
- //Eliminar contacto(el Ultimo)
-function eliminarContacto(){
-   let removerContacto = [1];
-  lista_Contacto.pop(removerContacto)
-  
+// Crea una función para borrar un contacto  de la lista
+function eliminarContacto(id) {
+  const user = lista_Contacto.findIndex((user) => user.id === id);
+  if (user !== -1) {
+    lista_Contacto.splice(user, 1);
+    console.log(`Usuario con el id ${id} eliminada con éxito.`);
+  } else {
+    console.log(`No se encontró ninguna usuario con el id ${id}.`);
+  }
 }
-eliminarContacto();
-console.log(lista_Contacto)
 
- //imprimir los contactos presentes en la lista.
+const eliminar = eliminarContacto(1702788010527);
 
-
- function imprimir (){ 
-
-  for(var i=0; i<lista_Contacto.length; i++){
-
-   }
-
- }
-
-imprimir();
-console.log(lista_Contacto)
+//Crea una función para imprimir en consola los contactos presentes en la lista
+function imprimirContactos() {
+  for (var i = 0; i < lista_Contacto.length; i++) {}
+  console.log(lista_Contacto[i]);
+}
